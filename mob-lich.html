@@ -1,0 +1,991 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0051)http://m.vten.ru/dungeon/combat/dSanctuary?1=normal -->
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:wicket="http://git-wip-us.apache.org/repos/asf/wicket/repo?p=wicket.git;a=blob_plain;f=wicket-core/src/main/resources/META-INF/wicket-1.5.xsd;hb=master" class=" js mobile no-desktop no-ie dungeon-section dungeon-combat-section   gradient rgba opacity textshadow multiplebgs boxshadow borderimage borderradius cssreflections csstransforms csstransitions touch retina fontface domloaded       w-565 gt-240 gt-320 gt-480 lt-640 lt-768 lt-800 lt-1024 lt-1280 lt-1440 lt-1680 lt-1920 portrait no-landscape" id="dsanctuary-page">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   
+    <title>Святилище Накрила</title>
+    <meta name="language" content="russian, ru, русский">
+    <meta name="viewport" content="width=480,target-densitydpi=high-dpi,user-scalable=no,maximum-scale=1.0">
+    <meta name="description" content="Фэнтези-MMORPG для телефонов - бесплатная, не требует установки. Зачищай подземелья, сражайся с другими игроками, наслаждайся сюжетом и отличной графикой!">
+    <meta name="Keywords" content="игры, RPG, MMORPG, фэнтези, онлайн, wap, бесплатно, мир теней, магия, играть онлайн, ролевые игры, лучшие онлайн игры, браузерная игра">
+    <meta property="og:title" content="Мир Теней">
+    <meta property="og:type" content="игра">
+    <meta property="og:url" content="http://m.vten.ru/">
+    <meta property="og:description" content="Фэнтези-MMORPG для телефонов - бесплатная, не требует установки. Зачищай подземелья, сражайся с другими игроками, наслаждайся сюжетом и отличной графикой!">
+    <link rel="manifest" href="http://m.vten.ru/manifest.json">
+    <meta name="robots" content="INDEX, FOLLOW">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon" href="http://img3.vten.ru/images/touch/touch-icon-iphone.png">
+    <link rel="apple-touch-icon" sizes="57x57" href="http://img3.vten.ru/images/touch/touch-icon-iphone.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="http://img0.vten.ru/images/touch/touch-icon-ipad.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="http://img3.vten.ru/images/touch/touch-icon-iphone-retina.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="http://img3.vten.ru/images/touch/touch-icon-ipad-retina.png">
+    <script type="text/javascript" src="./mob-lich_files/head.min.js.Без названия"></script>
+    <link rel="stylesheet" type="text/css" href="./mob-lich_files/style-v10.css">
+    <link rel="stylesheet" type="text/css" href="./mob-lich_files/fight-styles.css">
+
+    <!-- 
+    Page styles 
+    -->
+    <style>
+        ._mage._lich .unit-img {
+            background-image: url('../../images/combat/units/unit-strip-lich-left-side.png');        
+            animation: lichStatic 1.6s linear infinite;
+    -webkit-animation: lichStatic 1.6s linear infinite;
+        }
+        @keyframes lichStatic {
+            from {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(5px);
+            }
+
+            to {
+                transform: translateY(0);                
+            }
+        }
+
+        @-webkit-keyframes lichStatic {
+            from {
+                -webkit-transform: translateY(0);
+            }
+
+            50% {
+                -webkit-transform: translateY(5px);
+            }
+
+            to {
+                -webkit-transform: translateY(0);                
+            }
+        }
+        .right-side ._mage._lich .unit-img {
+            background-image: url('../../images/combat/units/unit-strip-lich-right-side.png');
+        }
+        ._mage._lich._attack .unit-img {
+            animation: lichAttack 0.6s linear forwards;
+            -webkit-animation: lichAttack 0.6s linear forwards;
+        }
+        @keyframes lichAttack {
+            from, 99.999% {
+                background-position: 0 -195px;
+            }
+
+            to {
+                background-position: 0 0;
+            }
+        }
+
+        @-webkit-keyframes lichAttack {
+            from, 99.999% {
+                background-position: 0 -195px;
+            }
+
+            to {
+                background-position: 0 0;
+            }
+        }
+
+        ._mage._lich .unit-img:before, 
+        ._mage._lich .unit-img:after {
+            background-image: url('../../images/combat/damage-lich.png'); 
+            top: 11px !important;
+            right: -3px;
+        }
+        .right-side ._mage._lich .unit-img:before, 
+        .right-side ._mage._lich .unit-img:after {
+            left: -3px;
+            right: inherit;
+        }
+
+        ._mage._lich._lighting .unit-img {
+            animation: lightingLich 1s linear forwards ;
+            -webkit-animation: lightingLich 1s linear forwards ;
+        }
+
+        @keyframes lightingLich {
+            from, 7.142% {
+                background-position: 0 -390px;
+            }
+
+            7.143%, 14.285% {
+                background-position: 0 -585px;
+            }
+
+            14.286%, 21.428% {
+                background-position: 0 -780px;
+            }
+
+            21.429%, 28.571% {
+                background-position: 0 -975px;
+            }
+
+            28.572%, 35.714% {
+                background-position: 0 -390px;
+            }
+
+            35.715%, 42.857% {
+                background-position: 0 -585px;
+            }
+
+            42.858%, 50% {
+                background-position: 0 -780px;
+            }
+
+            50.001%, 57.143% {
+                background-position: 0 -975px;
+            }
+
+            57.144%, 64.286% {
+                background-position: 0 -390px;
+            }
+
+            64.287%, 71.429% {
+                background-position: 0 -585px;
+            }
+
+            71.43%, 78.572% {
+                background-position: 0 -780px;
+            }
+
+            78.573%, 85.715% {
+                background-position: 0 -975px;
+            }
+
+            85.716%, 92.858% {
+                background-position: 0 -390px;
+            }
+
+            92.859%, 99.999% {
+                background-position: 0 -585px;
+            }
+
+            to {
+                background-position: 0 0;
+            }
+        }
+
+        @-webkit-keyframes lightingLich {
+            from, 7.142% {
+                background-position: 0 -390px;
+            }
+
+            7.143%, 14.285% {
+                background-position: 0 -585px;
+            }
+
+            14.286%, 21.428% {
+                background-position: 0 -780px;
+            }
+
+            21.429%, 28.571% {
+                background-position: 0 -975px;
+            }
+
+            28.572%, 35.714% {
+                background-position: 0 -390px;
+            }
+
+            35.715%, 42.857% {
+                background-position: 0 -585px;
+            }
+
+            42.858%, 50% {
+                background-position: 0 -780px;
+            }
+
+            50.001%, 57.143% {
+                background-position: 0 -975px;
+            }
+
+            57.144%, 64.286% {
+                background-position: 0 -390px;
+            }
+
+            64.287%, 71.429% {
+                background-position: 0 -585px;
+            }
+
+            71.43%, 78.572% {
+                background-position: 0 -780px;
+            }
+
+            78.573%, 85.715% {
+                background-position: 0 -975px;
+            }
+
+            85.716%, 92.858% {
+                background-position: 0 -390px;
+            }
+
+            92.859%, 99.999% {
+                background-position: 0 -585px;
+            }
+
+            to {
+                background-position: 0 0;
+            }
+        }
+
+        ._mage._lich._get-lighting .unit-img {
+            animation: lichLightingGet 1s linear forwards !important;
+            -webkit-animation: lichLightingGet 1s linear forwards !important;
+        }
+
+        @keyframes lichLightingGet {
+            from, 7.142% {
+                background-position: 0 -1170px;
+                transform: skewX(-3deg);
+            }
+
+            7.143%, 14.285% {
+                background-position: 0 -1170px;
+                transform: skewX(0deg);
+            }
+
+            14.286%, 21.428% {
+                background-position: 0 -1170px;
+                transform: skewX(-3deg);
+            }
+
+            21.429%, 28.571% {
+                background-position: 0 -1170px;
+                transform: skewX(0deg);
+            }
+
+            28.572%, 35.714% {
+                background-position: 0 -1170px;
+                transform: skewX(-3deg);
+            }
+
+            35.715%, 42.857% {
+                background-position: 0 -1170px;
+                transform: skewX(0deg);
+            }
+
+            42.858%, 50% {
+                background-position: 0 -1170px;
+                transform: skewX(-3deg);
+            }
+
+            50.001%, 57.143% {
+                background-position: 0 -1170px;
+                transform: skewX(0deg);
+            }
+
+            57.144%, 64.286% {
+                background-position: 0 -1170px;
+                transform: skewX(-3deg);
+            }
+
+            64.287%, 71.429% {
+                background-position: 0 -1170px;
+                transform: skewX(0deg);
+            }
+
+            71.43%, 78.572% {
+                background-position: 0 -1170px;
+                transform: skewX(-3deg);
+            }
+
+            78.573%, 85.715% {
+                background-position: 0 -1170px;
+                transform: skewX(0deg);
+            }
+
+            85.716%, 92.858% {
+                background-position: 0 -1170px;
+                transform: skewX(-3deg);
+            }
+
+            92.859%, 99.999% {
+                background-position: 0 -1170px;
+                transform: skewX(0deg);
+            }
+
+            to {
+                background-position: 0 0;
+                transform: skewX(0deg);
+            }
+        }
+
+        @-webkit-keyframes lichLightingGet {
+            from, 7.142% {
+                background-position: 0 -1170px;
+                -webkit-transform: skewX(-3deg);
+            }
+
+            7.143%, 14.285% {
+                background-position: 0 -1170px;
+                -webkit-transform: skewX(0deg);
+            }
+
+            14.286%, 21.428% {
+                background-position: 0 -1170px;
+                -webkit-transform: skewX(-3deg);
+            }
+
+            21.429%, 28.571% {
+                background-position: 0 -1170px;
+                -webkit-transform: skewX(0deg);
+            }
+
+            28.572%, 35.714% {
+                background-position: 0 -1170px;
+                -webkit-transform: skewX(-3deg);
+            }
+
+            35.715%, 42.857% {
+                background-position: 0 -1170px;
+                -webkit-transform: skewX(0deg);
+            }
+
+            42.858%, 50% {
+                background-position: 0 -1170px;
+                -webkit-transform: skewX(-3deg);
+            }
+
+            50.001%, 57.143% {
+                background-position: 0 -1170px;
+                -webkit-transform: skewX(0deg);
+            }
+
+            57.144%, 64.286% {
+                background-position: 0 -1170px;
+                -webkit-transform: skewX(-3deg);
+            }
+
+            64.287%, 71.429% {
+                background-position: 0 -1170px;
+                -webkit-transform: skewX(0deg);
+            }
+
+            71.43%, 78.572% {
+                background-position: 0 -1170px;
+                -webkit-transform: skewX(-3deg);
+            }
+
+            78.573%, 85.715% {
+                background-position: 0 -1170px;
+                -webkit-transform: skewX(0deg);
+            }
+
+            85.716%, 92.858% {
+                background-position: 0 -1170px;
+                -webkit-transform: skewX(-3deg);
+            }
+
+            92.859%, 99.999% {
+                background-position: 0 -1170px;
+                -webkit-transform: skewX(0deg);
+            }
+
+            to {
+                background-position: 0 0;
+                -webkit-transform: skewX(0deg);
+            }
+        }
+        ._mage._lich._damage._from-warrior .unit-img {
+            animation: lichGetDamageW 0.6s linear forwards !important;
+            -webkit-animation: lichGetDamageW 0.6s linear forwards !important;
+        }
+        @keyframes lichGetDamageW {
+            from, 49.999% {
+                transform: translateX(0);
+            }
+            50% {
+                transform: translateX(5px);
+            }             
+            to {
+                transform: translateX(0);
+            }
+        }
+
+        @-webkit-keyframes lichGetDamageW {
+            from, 49.999% {
+                -webkit-transform: translateX(0);
+            }
+            50% {
+                -webkit-transform: translateX(5px);
+            }             
+            to {
+                -webkit-transform: translateX(0);
+            }
+        }
+        ._mage._lich._damage._from-mage .unit-img {
+            animation: lichGetDamageM 0.6s linear forwards !important;
+            -webkit-animation: lichGetDamageM 0.6s linear forwards !important;
+        }
+        @keyframes lichGetDamageM {
+            from, 18.749% {
+                transform: translateX(0);
+            }
+            18.75% {
+                transform: translateX(5px);
+            }             
+            to {
+                transform: translateX(0);
+            }
+        }
+
+        @-webkit-keyframes lichGetDamageM {
+            from, 18.749% {
+                -webkit-transform: translateX(0);
+            }
+            18.75% {
+                -webkit-transform: translateX(5px);
+            }             
+            to {
+                -webkit-transform: translateX(0);
+            }
+        }
+        ._mage._lich._damage._from-monk .unit-img {
+            animation: lichGetDamageMonk 0.6s linear forwards !important;
+            -webkit-animation: lichGetDamageMonk 0.6s linear forwards !important;
+        }
+        @keyframes lichGetDamageMonk {
+            from {
+                transform: translateX(5px);
+            }                        
+            to {
+                transform: translateX(0);
+            }
+        }
+
+        @-webkit-keyframes lichGetDamageMonk {
+            from {
+                -webkit-transform: translateX(5px);
+            }                        
+            to {
+                -webkit-transform: translateX(0);
+            }
+        }
+        ._mage._lich._attack:before {            
+            background: url('../../images/combat/units/unit-strip-lich-left-side.png') 0 -1365px no-repeat;
+        }
+        .right-side ._mage._lich._attack:before {            
+            background: url('../../images/combat/units/unit-strip-lich-right-side.png') 0 -1365px no-repeat;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+        .wrap-battlefield._hell-ruins {
+            background-image: url('../../images/combat/backs/hell-ruins.jpg');            
+        }
+        @media only screen and (-webkit-min-device-pixel-ratio: 2.0), only screen and (min-device-pixel-ratio: 2.0) {
+            .wrap-battlefield._hell-ruins {
+                background-image: url('../../images/combat/backs/hell-ruins_x2.jpg');            
+                background-size: 680px auto;
+            }
+
+            ._mage._lich .unit-img, 
+            ._mage._lich._attack:before {            
+                background-image: url('../../images/combat/units/unit-strip-lich-left-side_x2.png');
+                background-size: 248px auto;
+            }
+            .right-side ._mage._lich .unit-img,
+            .right-side ._mage._lich._attack:before {            
+                background-image: url('../../images/combat/units/unit-strip-lich-right-side_x2.png');
+                background-size: 248px auto;
+            }
+            ._mage._lich .unit-img:before, 
+            ._mage._lich .unit-img:after {
+                background-image: url('../../images/combat/damage-lich_x2.png');
+                background-size: 128px auto;
+            }
+        }
+    </style>
+    
+</head>
+<body class="body">
+
+<div class="b-container" id="bodyContainer">    
+    <div>
+        <div id="id57">
+            <div class="wrap-battlefield _hell-ruins" id="id58">
+                <div style="display: none;" id="id4e"></div>
+                <div style="display: none;" id="id59"></div>
+                <div class="battlefield-modal _fail" id="id5a" style="display: none;"></div>
+                <div class="battlefield-sep"></div>
+                <div class="battlefield-head">
+                    <div class="battlefield-head-left" id="id5b">
+                        <div>
+                            <a class="foot-info-link-profile" href="http://m.vten.ru/user/40349437">
+                                <div class="menu-ava-img" style="background:url(&#39;http://img0.vten.ru/manekenimage/rich/x129/y16/w55/h55/bg:Quazar_back_Profile_640_380/mnkf:womanlight/ifch00:enchBodyF/ishldr00:Nakidka14/ihd00:twilightheadall/ish00:Rune3/iwpn00:Zhezl3/2116928200.jpg&#39;)  center top no-repeat"></div>
+                                <div class="foot-menu-lvl">15 ур.</div>
+                                <div class="battlefield-head-pet" id="id5c" style="background:url(&#39;http://img1.vten.ru/images/pets/iconpet/blackwolf_icon.png&#39;)  center top no-repeat">
+                                    <div class="wrap-battlefield-head-pet-hp">
+                                        <svg version="1.1" baseProfile="full" class="battlefield-head-pet-hp" xmlns="http://www.w3.org/2000/svg" id="id5d">
+                                            <circle cx="16" cy="16" r="15" style="stroke-dashoffset: 94.2;"></circle>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </a>
+                            <div class="battlefield-head-name">Duhprosvetmonk</div>
+                            <div class="battlefield-head-hp">
+                                <div class="shadowDeath-lvl" style="display: none;" id="id5e"></div>
+                                <div class="battlefield-head-hp-fill" style="width: 48%" id="id5f"></div>
+                                <div class="battlefield-head-hp-delta" style="width: 0%" id="id60"></div>
+                                <div class="battlefield-head-hp-text" id="id61">593 / 1.2K</div>
+                            </div>
+                            <div class="battlefield-head-buffs" id="id62"></div>
+                        </div>
+                    </div>
+                    <div class="battlefield-head-right" id="id63">
+                        <div>
+                            <div>
+                                <span class="foot-info-link-profile">
+                                    <img src="../../images/npcs/HellRuinBoss_01.png">
+                                </span>
+                                <div class="battlefield-head-name">Сумеречный Колдун</div>
+                                <div class="battlefield-head-hp">
+                                    <div class="shadowDeath-lvl" style="display: none;" id="ida3"></div>
+                                    <div class="battlefield-head-hp-fill" style="width: 64%" id="ida4"></div>
+                                    <div class="battlefield-head-hp-delta" style="width: 0%" id="ida5"></div>
+                                    <div class="battlefield-head-hp-text" id="ida6">19 / 30</div>
+                                </div>
+                                <div class="battlefield-head-buffs" id="ida7"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="battlefield">
+                    <div class="battlefield-lore">
+                        <div class="battlefield-lore-inner" id="id69">
+                            <span>
+                                <div class="divider"></div>
+                                <div class="lore">
+                                    <div class="lore-inner">Тюремщик читает заклинание!</div>
+                                </div>
+                                <div class="divider"></div>
+                            </span>
+                        </div>
+                    </div>
+
+
+                    <div class="battlefield-inner" id="id6a">
+                        <div class="left-side" id="id6b">
+                            <div class="unit _unit-pos-11" id="ida8">
+                                <div style="display:none;" id="ida9"></div>
+                                <span class="unit-link" id="idaa" title="Duhprosvetmonk"></span>
+                                <div class="unit-show _monk _iam _attack" id="idab">
+                                    <div class="decorA"></div>
+                                    <div class="decorB"></div>
+                                    <div class="decorC"></div>
+                                    <div class="decorD"></div>
+                                    <div class="decorE"></div>
+                                    <div class="decorF"></div>
+                                    <div class="unit-img _health50"></div>
+                                    <div class="unit-hp" id="idac">
+                                        <div class="unit-hp-fill" style="width: 48%" id="idae"></div>
+                                    </div>
+                                    <div class="unit-damage-text" id="idaf">
+                                        <div>5</div>
+                                    </div>
+                                </div>
+                                <div class="unit-buffs" id="idb0"></div>
+                                <div class="unit-pets" id="idb1"></div>
+                            </div>
+                            <div class="unit _unit-pos-12" id="ida8">
+                                <div style="display:none;" id="ida9"></div>
+                                <span class="unit-link" id="idaa" title="Duhprosvetmonk"></span>
+                                <div class="unit-show _mage _attack _attack-22" id="idab">
+                                    <div class="decorA"></div>
+                                    <div class="decorB"></div>
+                                    <div class="decorC"></div>
+                                    <div class="decorD"></div>
+                                    <div class="decorE"></div>
+                                    <div class="decorF"></div>
+                                    <div class="unit-img _health50"></div>
+                                    <div class="unit-hp" id="idac">
+                                        <div class="unit-hp-fill" style="width: 48%" id="idae"></div>
+                                    </div>
+                                    <div class="unit-damage-text" id="idaf">
+                                        <div>5</div>
+                                    </div>
+                                </div>
+                                <div class="unit-buffs" id="idb0"></div>
+                                <div class="unit-pets" id="idb1"></div>
+                            </div>
+                            <div class="unit _unit-pos-13" id="ida8">
+                                <div style="display:none;" id="ida9"></div>
+                                <span class="unit-link" id="idaa" title="Duhprosvetmonk"></span>
+                                <div class="unit-show _warrior _attack " id="idab">
+                                    <div class="decorA"></div>
+                                    <div class="decorB"></div>
+                                    <div class="decorC"></div>
+                                    <div class="decorD"></div>
+                                    <div class="decorE"></div>
+                                    <div class="decorF"></div>
+                                    <div class="unit-img _health50"></div>
+                                    <div class="unit-hp" id="idac">
+                                        <div class="unit-hp-fill" style="width: 48%" id="idae"></div>
+                                    </div>
+                                    <div class="unit-damage-text" id="idaf">
+                                        <div>5</div>
+                                    </div>
+                                </div>
+                                <div class="unit-buffs" id="idb0"></div>
+                                <div class="unit-pets" id="idb1"></div>
+                            </div>
+                             <div class="unit _unit-pos-14" id="ida8">
+                                <div style="display:none;" id="ida9"></div>
+                                <span class="unit-link" id="idaa" title="Duhprosvetmonk"></span>
+                                <div class="unit-show _warrior _lighting " id="idab">
+                                    <div class="decorA"></div>
+                                    <div class="decorB"></div>
+                                    <div class="decorC"></div>
+                                    <div class="decorD"></div>
+                                    <div class="decorE"></div>
+                                    <div class="decorF"></div>
+                                    <div class="unit-img _health50"></div>
+                                    <div class="unit-hp" id="idac">
+                                        <div class="unit-hp-fill" style="width: 48%" id="idae"></div>
+                                    </div>
+                                    <div class="unit-damage-text" id="idaf">
+                                        <div>5</div>
+                                    </div>
+                                </div>
+                                <div class="unit-buffs" id="idb0"></div>
+                                <div class="unit-pets" id="idb1"></div>
+                            </div>
+                            <div class="unit _unit-pos-15" id="ida8">
+                                <div style="display:none;" id="ida9"></div>
+                                <span class="unit-link" id="idaa" title="Duhprosvetmonk"></span>
+                                <div class="unit-show _monk _get-lighting " id="idab">
+                                    <div class="decorA"></div>
+                                    <div class="decorB"></div>
+                                    <div class="decorC"></div>
+                                    <div class="decorD"></div>
+                                    <div class="decorE"></div>
+                                    <div class="decorF"></div>
+                                    <div class="unit-img _health50"></div>
+                                    <div class="unit-hp" id="idac">
+                                        <div class="unit-hp-fill" style="width: 48%" id="idae"></div>
+                                    </div>
+                                    <div class="unit-damage-text" id="idaf">
+                                        <div>5</div>
+                                    </div>
+                                </div>
+                                <div class="unit-buffs" id="idb0"></div>
+                                <div class="unit-pets" id="idb1"></div>
+                            </div>
+                        </div>
+                        <div class="right-side" id="id77">
+                            <div class="unit _unit-pos-21" id="idd2">
+                                <div style="display:none;" id="idd3"></div>
+                                <a class="unit-link" id="idcf" href="#"></a>
+                                <div class="unit-show unit-show _mage _lich _get-lighting _current" id="idd4">
+                                    <div class="decorA"></div>
+                                    <div class="decorB"></div>
+                                    <div class="decorC"></div>
+                                    <div class="decorD"></div>
+                                    <div class="decorE"></div>
+                                    <div class="decorF"></div>
+                                    <div class="unit-img"></div>
+                                    <div class="unit-hp" id="idd5">
+                                        <div class="unit-hp-fill" style="width: 64%" id="idd6"></div>
+                                        <div class="unit-amount" id="idd7">2</div>
+                                    </div>
+                                    <div class="unit-damage-text" id="idd8"></div>
+                                </div>
+                                <div class="unit-buffs" id="idd9"></div>
+                                <div class="unit-pets" id="idda"></div>
+                            </div>
+                            <div class="unit _unit-pos-24" id="iddb">
+                                <div style="display:none;" id="iddc"></div>
+                                <a class="unit-link" id="idd0" href="#"></a>
+                                <div class="unit-show _mage _lich _damage _from-warrior" id="iddd">
+                                    <div class="decorA"></div>
+                                    <div class="decorB"></div>
+                                    <div class="decorC"></div>
+                                    <div class="decorD"></div>
+                                    <div class="decorE"></div>
+                                    <div class="decorF"></div>
+                                    <div class="unit-img"></div>
+                                    <div class="unit-hp" id="idde">
+                                        <div class="unit-hp-fill" style="width: 100%" id="iddf"></div>
+                                        <div class="unit-amount" id="ide0">2</div>
+                                    </div>
+                                    <div class="unit-damage-text" id="ide1"></div>
+                                </div>
+                                <div class="unit-buffs" id="ide2"></div>
+                                <div class="unit-pets" id="ide3"></div>
+                            </div>
+                            <div class="unit _unit-pos-22" id="ide4">
+                                <div style="display:none;" id="ide5"></div>
+                                <a class="unit-link" id="idd1" href="#" title="Волк"></a>
+                                <div class="unit-show _mage _lich _attack _attack-11" id="ide6">
+                                    <div class="decorA"></div>
+                                    <div class="decorB"></div>
+                                    <div class="decorC"></div>
+                                    <div class="decorD"></div>
+                                    <div class="decorE"></div>
+                                    <div class="decorF"></div>
+                                    <div class="unit-img _health100"></div>
+                                    <div class="unit-hp" id="ide7">
+                                        <div class="unit-hp-fill" style="width: 100%" id="ide8"></div>
+                                    </div>
+                                    <div class="unit-damage-text" id="ide9"></div>
+                                </div>
+                                <div class="unit-buffs" id="idea"></div>
+                                <div class="unit-pets" id="ideb"></div>
+                            </div>
+                            <div class="unit _unit-pos-23" id="ide4">
+                                <div style="display:none;" id="ide5"></div>
+                                <a class="unit-link" id="idd1" href="#" title="Волк"></a>
+                                <div class="unit-show _mage _lich _lighting" id="ide6">
+                                    <div class="decorA"></div>
+                                    <div class="decorB"></div>
+                                    <div class="decorC"></div>
+                                    <div class="decorD"></div>
+                                    <div class="decorE"></div>
+                                    <div class="decorF"></div>
+                                    <div class="unit-img _health100"></div>
+                                    <div class="unit-hp" id="ide7">
+                                        <div class="unit-hp-fill" style="width: 100%" id="ide8"></div>
+                                    </div>
+                                    <div class="unit-damage-text" id="ide9"></div>
+                                </div>
+                                <div class="unit-buffs" id="idea"></div>
+                                <div class="unit-pets" id="ideb"></div>
+                            </div>
+                            <div class="unit _unit-pos-25" id="ide4">
+                                <div style="display:none;" id="ide5"></div>
+                                <a class="unit-link" id="idd1" href="#" title="Волк"></a>
+                                <div class="unit-show _mage _lich" id="ide6">
+                                    <div class="decorA"></div>
+                                    <div class="decorB"></div>
+                                    <div class="decorC"></div>
+                                    <div class="decorD"></div>
+                                    <div class="decorE"></div>
+                                    <div class="decorF"></div>
+                                    <div class="unit-img _health100"></div>
+                                    <div class="unit-hp" id="ide7">
+                                        <div class="unit-hp-fill" style="width: 100%" id="ide8"></div>
+                                    </div>
+                                    <div class="unit-damage-text" id="ide9"></div>
+                                </div>
+                                <div class="unit-buffs" id="idea"></div>
+                                <div class="unit-pets" id="ideb"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="battlefield-controls" id="id88">
+                    <span id="id89"></span>
+                    <div class="ammo-counter" id="id8a" style="display: none;"></div>
+                    <div class="wrap-attack-button-link">
+                        <a class="attack-button-link" id="id52" href="http://m.vten.ru/dungeon/combat/dSanctuary?24-1.ILinkListener-combatPanel-container-battlefield-controls-attackBlock-attackLink&amp;1=normal" title="Атаковать"></a>
+                        <div class="attack-button _attack-ready" id="id8b">
+                            <div class="attack-button-text" id="id8c">123</div>
+                            <div class="wrap-attack-button-counter">
+                                <svg version="1.1" baseProfile="full" class="attack-button-counter" xmlns="http://www.w3.org/2000/svg" id="id8d">
+                                    <circle cx="48" cy="48" r="45" style="stroke-dashoffset: 0.0;"></circle>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="controls-skills">
+                        <div class="wrap-skill-link _skill-pos-1">
+                            <a class="skill-link" id="id9f" href="http://m.vten.ru/dungeon/combat/dSanctuary?24-1.ILinkListener-combatPanel-container-battlefield-controls-skills-0-skillBlock-skillLink&amp;1=normal" title="Гром и Молния"></a>
+                            <div class="skill-img _skill-img-lighting" id="idc4">
+                                <div class="time-counter" id="idc5">00:00</div>
+                            </div>
+                        </div>
+                        <div class="wrap-skill-link _skill-pos-2">
+                            <a class="skill-link" id="ida0" href="http://m.vten.ru/dungeon/combat/dSanctuary?24-1.ILinkListener-combatPanel-container-battlefield-controls-skills-1-skillBlock-skillLink&amp;1=normal" title="Листок Лотоса"></a>
+                            <div class="skill-img _skill-img-lotos" id="idc6">
+                                <div class="time-counter" id="idc7">00:00</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="controls-potions">
+                        <div class="wrap-potion-link _potion-pos-1">
+                            <a class="potion-link" id="ida1" href="http://m.vten.ru/dungeon/combat/dSanctuary?24-1.ILinkListener-combatPanel-container-battlefield-controls-beltItems-0-itemBlock-itemLink&amp;1=normal" title="Зелье обороны"></a>
+                            <div class="potion-link-img" id="idc8">
+                                <img alt="рх" src="./mob-lich_files/Potions_arm_1_32.png" class="p32img">
+                                <div class="time-counter" id="idc9">00:00</div>
+                            </div>
+                        </div>
+                        <div class="wrap-potion-link _potion-pos-2">
+                            <a class="potion-link" id="ida2" href="http://m.vten.ru/dungeon/combat/dSanctuary?24-1.ILinkListener-combatPanel-container-battlefield-controls-beltItems-1-itemBlock-itemLink&amp;1=normal" title="Зелье здоровья"></a>
+                            <div class="potion-link-img" id="idca">
+                                <img alt="рх" src="./mob-lich_files/hp-1.png" width="32" height="32">
+                                <div class="time-counter" id="idcb">00:00</div>
+                            </div>
+                        </div>
+                        <div class="wrap-potion-link _potion-pos-3">
+                            <span class="potion-link" id="idcc"></span>
+                            <div class="potion-link-img _potion-link-empty" id="idcd">
+                                <div class="time-counter" id="idce">00:00</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="controls-devices"></div>
+                </div>
+                <div class="battlefield-sep"></div>
+                <div class="battlefield-log" id="id99">
+                    <ol>
+                        <li>
+                            <img src="./mob-lich_files/sword_red.png" width="12" height="12" alt=".">
+                            <span class="major">Волк зацепил тебя на 5</span>
+                            <span class="minor">59:07</span>
+                        </li>
+                        <li>
+                            <img src="./mob-lich_files/sword_red.png" width="12" height="12" alt=".">
+                            <span class="info">Черный Волк восстанавливает себе 1 здоровья!</span>
+                            <span class="minor">59:05</span>
+                        </li>
+                        <li>
+                            <img src="./mob-lich_files/pets.png" width="12" height="12" alt=".">
+                            Твой питомец Черный Волк принял на себя предназначавшийся тебе удар. <span class="minor">59:05</span>
+                        </li>
+                        <li>
+                            <img src="./mob-lich_files/sword_red.png" width="12" height="12" alt=".">
+                            <span class="major">Волк зацепил тебя на 6  проигнорировав защиту</span>
+                            <span class="minor">59:05</span>
+                        </li>
+                        <li>
+                            <img src="./mob-lich_files/sword_red.png" width="12" height="12" alt=".">
+                            <span class="major">Колдун зацепил тебя на 5</span>
+                            <span class="minor">59:05</span>
+                        </li>
+                        <li>
+                            <img src="./mob-lich_files/sword_red.png" width="12" height="12" alt=".">
+                            <span class="major">Волк зацепил тебя на 5</span>
+                            <span class="minor">59:03</span>
+                        </li>
+                        <li>
+                            <img src="./mob-lich_files/sword_red.png" width="12" height="12" alt=".">
+                            <span class="major">Волк зацепил тебя на 4</span>
+                            <span class="minor">59:03</span>
+                        </li>
+                        <li>
+                            <img src="./mob-lich_files/sword_red.png" width="12" height="12" alt=".">
+                            <span class="major">Волк зацепил тебя на 9</span>
+                            <span class="minor">59:03</span>
+                        </li>
+                        <li>
+                            <img src="./mob-lich_files/sword_red.png" width="12" height="12" alt=".">
+                            <span class="major">Волк зацепил тебя на 4</span>
+                            <span class="minor">59:01</span>
+                        </li>
+                        <li>
+                            <img src="./mob-lich_files/sword_red.png" width="12" height="12" alt=".">
+                            <span class="major">Волк зацепил тебя на 10</span>
+                            <span class="minor">59:01</span>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="b-panel">
+        <div class="panel-inner">
+            <div class="font-small text-italic c-moregray">
+                <div class="font-small text-italic c-moregray">
+                    <img border="0" width="12" height="12" src="./mob-lich_files/arr.png" alt="">
+                    ID подземелья: <span>59397581</span>
+                </div>
+                <span>(снова отправиться в это подземелье можно будет через 14 минут)</span>
+            </div>
+        </div>
+    </div>
+    <div class="info-box">
+        <span>
+            <img src="./mob-lich_files/party2.png" class="i12img" width="12" height="12">
+            <a class="c-low" href="http://m.vten.ru/party">
+                <span>Банда</span>
+            </a>                    :Святилище Накрила (1/1)
+        </span>
+        <a class="info-box-open-link" href="http://m.vten.ru/dungeon/combat/dSanctuary?1=normal&amp;ppAction=teamFold&amp;ppKey=5198749509513752576"></a>
+    </div>
+    <div class="info-box">
+        <a class="info-box-open-link" href="http://m.vten.ru/dungeon/combat/dSanctuary?1=normal&amp;ppAction=foldQuest"></a>
+        <img src="./mob-lich_files/question.png" alt="">
+        <a class="c-low" href="http://m.vten.ru/quest/GuideThrough3">
+            <span class="task-btn-text">
+                <span>
+                    Прибор экипирован:
+                    <nobr>
+                        0<span>/</span> 1
+                    </nobr>
+                </span>
+            </span>
+        </a>
+    </div>
+    <div class="foot-info-back">
+        <a class="foot-info-back-link" href="http://m.vten.ru/city">В город</a>
+    </div>
+    <div class="foot-info-exp" id="ExpBar1">
+        <div class="foot-info-exp-fill" style="width:64%"></div>
+    </div>
+    <div class="foot-info">
+        <table border="0" cellpadding="0" cellspacing="0" width="100%" class="foot-info-table">
+            <tbody>
+                <tr>
+                    <td width="22%" valign="bottom">
+                        <a class="foot-info-link" href="http://m.vten.ru/user/achievements" title="Подвиги">
+                            <span class="foot-menu-icon _achiev"></span>
+                        </a>
+                    </td>
+                    <td width="22%" valign="bottom">
+                        <a class="foot-info-link" href="http://m.vten.ru/message/list" title="Почта">
+                            <span class="foot-menu-icon _mail"></span>
+                        </a>
+                    </td>
+                    <td width="12%" valign="bottom">
+                        <div class="wrap-profile-link">
+                            <a class="foot-info-link-profile" href="http://m.vten.ru/user">
+                                <div class="menu-ava-img" style="background-image: url(&#39;http://img0.vten.ru/manekenimage/rich/x129/y16/w55/h55/bg:Quazar_back_Profile_640_380/mnkf:womanlight/ifch00:enchBodyF/ishldr00:Nakidka14/ihd00:twilightheadall/ish00:Rune3/iwpn00:Zhezl3/2116928200.jpg&#39;)"></div>
+                                <div class="foot-menu-lvl">15 ур.</div>
+                            </a>
+                        </div>
+                    </td>
+                    <td width="22%" valign="bottom">
+                        <a class="foot-info-link" href="http://m.vten.ru/guild/autosearch" title="Гильдия">
+                            <span class="foot-menu-icon _guild"></span>
+                        </a>
+                    </td>
+                    <td width="22%" valign="bottom">
+                        <a class="foot-info-link" href="http://m.vten.ru/user/rack">
+                            <span class="foot-menu-icon _rack"></span>
+                            <span class="foot-info-link-count">7/12</span>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="foot-info-resources">
+        <span>
+            <img src="./mob-lich_files/mineral.png" width="12" height="12" alt="ми">
+            <span class="va-m">7</span>
+        </span>
+        <span>
+            <img src="./mob-lich_files/skull.png" width="12" height="12" alt="чр">
+            <span class="va-m">2</span>
+        </span>
+        <span>
+            <img src="./mob-lich_files/stamp.png" width="12" height="12" alt=".">
+            <span class="va-m">8</span>
+        </span>
+    </div>
+</div>
+
+</body>
+</html>
